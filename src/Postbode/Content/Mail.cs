@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Postbode.Interfaces;
 
-namespace Postbode
+namespace Postbode.Content
 {
     public class Mail : IMail
     {

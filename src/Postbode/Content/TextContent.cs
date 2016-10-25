@@ -1,4 +1,6 @@
-﻿namespace Postbode
+﻿using Postbode.Interfaces;
+
+namespace Postbode.Content
 {
     public class TextContent : IContent
     {

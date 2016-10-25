@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Postbode.Interfaces;
+﻿using Postbode.Interfaces;
 
-namespace Postbode
+namespace Postbode.Client
 {
     public class Response : IResponse
     {
