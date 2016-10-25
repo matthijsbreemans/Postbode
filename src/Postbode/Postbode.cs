@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Postbode.Exceptions;
+using Postbode.Interfaces;
 
 namespace Postbode
 {
@@ -91,21 +92,17 @@ namespace Postbode
             return this;
         }
 
-        public async Task SendAsync(IDeliveryService deliveryService = null)
+        public async Task<IResponse> SendAsync(IDeliveryService deliveryService = null)
         {
             if (deliveryService != null)
             {
-                await deliveryService.SendAsync(this);
+                return await deliveryService.SendAsync(this);
             }
-            else if (DeliveryService != null)
+            if (DeliveryService != null)
             {
-                await DeliveryService.SendAsync(this);
+                return await DeliveryService.SendAsync(this);
             }
-            else
-            {
-                throw new NoDeliveryServiceSetException();
-            }
-
+            throw new NoDeliveryServiceSetException();
         }
 
         public void Dispose()

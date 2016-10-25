@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Postbode.Interfaces;
 
 namespace Postbode
 {
     public interface IDeliveryService : IDisposable
     {
-        IPostbode Postbode { get; set; }
-
-        Task SendAsync(IPostbode service = null);
+        Task<IResponse> SendAsync(IPostbode service = null);
 
         string Name { get; }
     }
