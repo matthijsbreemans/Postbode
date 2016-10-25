@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Postbode.Client;
 using Postbode.Exceptions;
 using Postbode.Interfaces;
 
@@ -18,14 +19,19 @@ namespace Postbode.Mailgun
 
         public string Apikey { get; set; }
 
-        public MailgunDeliveryService(string domain, string apikey)
+        public MailgunDeliveryService()
         {
-            if (domain != null)
-                Domain = domain;
-            if (apikey != null)
-                Apikey = apikey;
-
+            
         }
+
+        //public MailgunDeliveryService(string domain = null, string apikey = null)
+        //{
+        //    if (domain != null)
+        //        Domain = domain;
+        //    if (apikey != null)
+        //        Apikey = apikey;
+
+        //}
 
         public async Task<IResponse> SendAsync(IPostbode postbode)
         {
@@ -64,10 +70,9 @@ namespace Postbode.Mailgun
         }
 
         public string Name => "Mailgun";
-
         public void Dispose()
         {
-
+            throw new NotImplementedException();
         }
     }
 
@@ -76,7 +81,7 @@ namespace Postbode.Mailgun
 
         public static IPostbode UseMailgun(this IPostbode postbode, string domain = null, string apikey = null)
         {
-            postbode.Use(new MailgunDeliveryService(domain, apikey));
+            postbode.Use(new MailgunDeliveryService());
             return postbode;
         }
     }

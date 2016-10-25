@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Postbode.Content;
 using Postbode.Exceptions;
 using Postbode.Interfaces;
 
-namespace Postbode
+namespace Postbode.Client
 {
     public class Postbode : IPostbode, IDisposable
     {
-        public Postbode(IDeliveryService service = null, IMail mail = null)
-        {
-            DeliveryService = service;
-            Mail = mail;
-        }
 
         public IDeliveryService DeliveryService { get; set; }
 

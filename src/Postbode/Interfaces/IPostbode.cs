@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Postbode.Content;
 using Postbode.Interfaces;
 
 namespace Postbode
