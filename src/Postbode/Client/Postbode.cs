@@ -6,7 +6,7 @@ using Postbode.Interfaces;
 
 namespace Postbode.Client
 {
-    public class Postbode : IPostbode, IDisposable
+    public class Postbode : IPostbode
     {
 
         public IDeliveryService DeliveryService { get; set; }
@@ -99,11 +99,6 @@ namespace Postbode.Client
                 return await DeliveryService.SendAsync(this);
             }
             throw new NoDeliveryServiceSetException();
-        }
-
-        public void Dispose()
-        {
-            
         }
     }
 }

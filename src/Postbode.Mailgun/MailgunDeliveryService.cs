@@ -19,19 +19,14 @@ namespace Postbode.Mailgun
 
         public string Apikey { get; set; }
 
-        public MailgunDeliveryService()
+        public MailgunDeliveryService(string domain = null, string apikey = null)
         {
-            
+            if (domain != null)
+                Domain = domain;
+            if (apikey != null)
+                Apikey = apikey;
+
         }
-
-        //public MailgunDeliveryService(string domain = null, string apikey = null)
-        //{
-        //    if (domain != null)
-        //        Domain = domain;
-        //    if (apikey != null)
-        //        Apikey = apikey;
-
-        //}
 
         public async Task<IResponse> SendAsync(IPostbode postbode)
         {
@@ -81,7 +76,7 @@ namespace Postbode.Mailgun
 
         public static IPostbode UseMailgun(this IPostbode postbode, string domain = null, string apikey = null)
         {
-            postbode.Use(new MailgunDeliveryService());
+            postbode.Use(new MailgunDeliveryService(domain, apikey));
             return postbode;
         }
     }

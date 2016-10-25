@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Postbode.Interfaces
 {
-    public interface IDeliveryService : IDisposable
+    public interface IDeliveryService
     {
         Task<IResponse> SendAsync(IPostbode service = null);
 
