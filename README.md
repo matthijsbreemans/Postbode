@@ -4,6 +4,6 @@ Example:
 ```
   using (var postbode = new Postbode())
   {
-      postbode.UseMailgun("domain.nl").SetRecipient("to@example.org").SetSender("sender@example.org").SetSubject("test").SetTextContent("HALLLOOOO").SendAsync();
+      postbode.UseMailgun("domain.nl", "0xapikeyhere").SetRecipient("to@example.org").SetSender("sender@example.org").SetSubject("test").SetTextContent("HALLLOOOO").SendAsync();
   }
 ```
