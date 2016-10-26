@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Postbode.Sendgrid
 {
-    public class Class1
+    public class SendgridDeliveryService
     {
-        public Class1()
+        public SendgridDeliveryService()
         {
         }
     }

@@ -3,13 +3,14 @@
 
   "dependencies": {
     "MimeKit": "1.8.0",
-    "NETStandard.Library": "1.6.0",
-    "Postbode": "1.0.0-*"
+    "Postbode": "0.1.0-*"
   },
 
   "frameworks": {
     "netstandard1.6": {
-      "imports": "dnxcore50"
+      "dependencies": {
+        "NETStandard.Library": "1.6.1-preview1-24530-04"
+      }
     }
   }
 }
