@@ -65,10 +65,6 @@ namespace Postbode.Mailgun
         }
 
         public string Name => "Mailgun";
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
     }
 
     public static class MailgunDeliveryServiceExtension

@@ -5,7 +5,7 @@ namespace Postbode.Interfaces
 {
     public interface IDeliveryService
     {
-        Task<IResponse> SendAsync(IPostbode service = null);
+        Task<IResponse> SendAsync(IPostbode postbode);
 
         string Name { get; }
     }

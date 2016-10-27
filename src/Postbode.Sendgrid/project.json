@@ -2,7 +2,8 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "Postbode": "0.1.0-*"
+    "Postbode": "0.1.0-*",
+    "System.Runtime.Serialization.Json": "4.0.2"
   },
 
   "frameworks": {
