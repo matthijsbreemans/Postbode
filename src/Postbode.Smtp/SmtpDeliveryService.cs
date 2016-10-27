@@ -16,4 +16,17 @@ namespace Postbode.Smtp
             throw new NotSupportedException("Waiting for .NET Core 1.2.0");
         }
     }
+
+    /// <summary>
+    /// Extension class for the Smtp delivery service
+    /// </summary>
+    public static class SmtpDeliveryServiceExtension
+    {
+
+        public static IPostbode UseSmtp(this IPostbode postbode)
+        {
+            postbode.Use(new SmtpDeliveryService());
+            return postbode;
+        }
+    }
 }
