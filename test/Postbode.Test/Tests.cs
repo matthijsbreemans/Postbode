@@ -11,7 +11,7 @@ namespace Tests
         [Fact]
         public async void SimpelTest() 
         {
-            var response = await new Postbode.Client.Postbode().SetTextContent("test").Use(new TestDeliveryService()).SendAsync();
+            var response = await new Postbode.PostbodeClient().SetTextContent("test").Use(new TestDeliveryService()).SendAsync();
 
             Assert.True(response.Succes);
 

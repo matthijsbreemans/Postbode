@@ -1,6 +1,6 @@
 ﻿using Postbode.Interfaces;
 
-namespace Postbode.Client
+namespace Postbode
 {
     public class Response : IResponse
     {
