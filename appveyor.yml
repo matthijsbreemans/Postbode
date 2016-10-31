@@ -1,7 +1,7 @@
 version: 0.1.{build}
 environment:
-  COVERALLS_REPO_TOKEN:
-    secure: rq7lGrSI4Rjv2JVEyvJM9Zdf1y8IBCM37/o+1ru3Gg5V9eIrC3SlT8aNVNYBocZg
+  COVECOV_TOKEN:
+	secure: QV71IQgoNpmo7RthgwJFHYSOXDi3Af0TDxy28vTMlhiWBwSilG+oplz3JVrxKd11
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
