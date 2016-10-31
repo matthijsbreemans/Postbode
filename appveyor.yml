@@ -1,7 +1,7 @@
 version: 0.1.{build}
 environment:
   COVECOV_TOKEN:
-	secure: QV71IQgoNpmo7RthgwJFHYSOXDi3Af0TDxy28vTMlhiWBwSilG+oplz3JVrxKd11
+    secure: QV71IQgoNpmo7RthgwJFHYSOXDi3Af0TDxy28vTMlhiWBwSilG+oplz3JVrxKd11
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
