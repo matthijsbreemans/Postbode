@@ -6,7 +6,7 @@ using Postbode;
 using Postbode.Content;
 using Postbode.Interfaces;
 
-namespace Tests
+namespace Postbode.Test
 {
     public class Tests
     {
@@ -54,8 +54,6 @@ namespace Tests
             });
             var postbode = new PostbodeClient(options);
             
-
-
             Assert.Equal(postbode.Mail.From.Email, options.Value.DefaultFromAddress);
 
             Assert.Equal(postbode.Mail.From.Name, options.Value.DefaultFromName);
