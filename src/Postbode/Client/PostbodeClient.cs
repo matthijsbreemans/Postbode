@@ -6,7 +6,7 @@ using Postbode.Interfaces;
 
 namespace Postbode.Client
 {
-    public class Postbode : IPostbode
+    public class PostbodeClient : IPostbode
     {
 
         public IDeliveryService DeliveryService { get; set; }
