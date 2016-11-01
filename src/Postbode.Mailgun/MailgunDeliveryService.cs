@@ -11,16 +11,22 @@ using Microsoft.Extensions.Options;
 using Postbode;
 using Postbode.Exceptions;
 using Postbode.Interfaces;
+using Postbode.Utils;
 
 namespace Postbode.Mailgun
 {
     public class MailgunDeliveryService : IDeliveryService
     {
+
+
         public string Domain { get; set; }
 
         public string ApiKey { get; set; }
 
-        public MailgunDeliveryService(string domain = null, string apikey = null, IOptions<PostbodeMailgunOptions> options = null)
+
+        private IHttpHandler _httpClient { get; }
+
+        public MailgunDeliveryService(string domain = null, string apikey = null, IOptions<PostbodeMailgunOptions> options = null, IHttpHandler httpClient = null)
         {
             if (domain != null)
                 Domain = domain;
@@ -31,16 +37,15 @@ namespace Postbode.Mailgun
                 Domain = options.Value.Domain;
                 ApiKey = options.Value.ApiKey;
             }
-
+            _httpClient = httpClient ?? new HttpHandler();
         }
 
         public async Task<IResponse> SendAsync(IPostbode postbode)
         {
 
-            if (postbode.Mail.Content.IsMime)
+            if (!postbode.Mail.Content.IsMime)
             {
-                var client = new HttpClient();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes("api" + ":" + ApiKey)));
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes("api" + ":" + ApiKey)));
 
 
                 var mail = postbode.Mail;
@@ -51,15 +56,17 @@ namespace Postbode.Mailgun
                 form["subject"] = mail.Subject;
                 form["text"] = mail.Content.Content;
 
-                foreach (var keyValuePair in postbode.Mail.Headers)
+                if (postbode.Mail.Headers != null)
                 {
-                    if (!form.ContainsKey(keyValuePair.Key))
+                    foreach (var keyValuePair in postbode.Mail.Headers)
                     {
-                        form.Add(keyValuePair.Key, keyValuePair.Value);
+                        if (!form.ContainsKey(keyValuePair.Key))
+                        {
+                            form.Add(keyValuePair.Key, keyValuePair.Value);
+                        }
                     }
                 }
-
-                var response = await client.PostAsync("https://api.mailgun.net/v2/" + Domain + "/messages", new FormUrlEncodedContent(form));
+                var response = await _httpClient.PostAsync("https://api.mailgun.net/v2/" + Domain + "/messages", new FormUrlEncodedContent(form));
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
@@ -78,8 +85,7 @@ namespace Postbode.Mailgun
 
         public static IPostbode UseMailgun(this IPostbode postbode, string domain = null, string apikey = null)
         {
-            postbode.Use(new MailgunDeliveryService(domain, apikey));
-            return postbode;
+            return postbode.Use(new MailgunDeliveryService(domain, apikey));
         }
     }
 }
