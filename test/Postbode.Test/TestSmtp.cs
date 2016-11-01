@@ -20,5 +20,12 @@ namespace Postbode.Test
             await Assert.ThrowsAsync<NotImplementedException>(() => postbode.SendAsync());
         }
 
+        [Fact]
+        public void SmtpNameTest()
+        {
+            var client = new PostbodeClient().UseSmtp();
+
+            Assert.Equal(client.DeliveryService.Name.ToLowerInvariant(), "system.net.smtp");
+        }
     }
 }

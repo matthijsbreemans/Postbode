@@ -49,5 +49,12 @@ namespace Postbode.Test
 
             Assert.False(result.Succes);
         }
+        [Fact]
+        public void SendgridNameTest()
+        {
+            var client = new PostbodeClient().UseSendgrid();
+
+            Assert.Equal(client.DeliveryService.Name.ToLowerInvariant(), "sendgrid");
+        }
     }
 }

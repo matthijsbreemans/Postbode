@@ -47,5 +47,12 @@ namespace Postbode.Test
             var result = await postbode.SendAsync();
             Assert.False(result.Succes);
         }
+        [Fact]
+        public void MailgunNameTest()
+        {
+           var client = new PostbodeClient().UseMailgun();
+
+            Assert.Equal(client.DeliveryService.Name.ToLowerInvariant(), "mailgun");
+        }
     }
 }
