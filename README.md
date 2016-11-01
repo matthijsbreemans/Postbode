@@ -1,4 +1,5 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/g3jejovi6b262u2f?svg=true)](https://ci.appveyor.com/project/matthijsbreemans/postbode) [![Coverage Status](https://coveralls.io/repos/github/matthijsbreemans/Postbode/badge.svg?branch=master)](https://coveralls.io/github/matthijsbreemans/Postbode?branch=master)
+[![Build status](https://ci.appveyor.com/api/projects/status/g3jejovi6b262u2f?svg=true)](https://ci.appveyor.com/project/matthijsbreemans/postbode) [![codecov](https://codecov.io/gh/matthijsbreemans/Postbode/branch/master/graph/badge.svg)](https://codecov.io/gh/matthijsbreemans/Postbode)
+
 
 Example:
 ```
