@@ -8,7 +8,7 @@ namespace Postbode.Mailgun
     /// <summary>
     /// Class to map the configuration options
     /// </summary>
-    public class PostbodeMailgunConfig
+    public class PostbodeMailgunOptions
     {
         /// <summary>
         /// The domain 

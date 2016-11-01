@@ -8,7 +8,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
-using Postbode.Client;
+using Postbode;
 using Postbode.Exceptions;
 using Postbode.Interfaces;
 
@@ -20,7 +20,7 @@ namespace Postbode.Mailgun
 
         public string ApiKey { get; set; }
 
-        public MailgunDeliveryService(string domain = null, string apikey = null, IOptions<PostbodeMailgunConfig> options = null)
+        public MailgunDeliveryService(string domain = null, string apikey = null, IOptions<PostbodeMailgunOptions> options = null)
         {
             if (domain != null)
                 Domain = domain;
@@ -29,7 +29,7 @@ namespace Postbode.Mailgun
             if (options?.Value != null)
             {
                 Domain = options.Value.Domain;
-                ApiKey = options.Value.APIKey;
+                ApiKey = options.Value.ApiKey;
             }
 
         }

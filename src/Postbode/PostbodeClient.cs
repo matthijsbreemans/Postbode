@@ -1,13 +1,21 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using Postbode.Content;
 using Postbode.Exceptions;
 using Postbode.Interfaces;
 
-namespace Postbode.Client
+namespace Postbode
 {
     public class PostbodeClient : IPostbode
     {
+        public PostbodeClient(IOptions<PostbodeOptions> options = null)
+        {
+            if (!string.IsNullOrWhiteSpace(options?.Value?.DefaultFromAddress))
+            {
+                SetSender(options.Value.DefaultFromAddress);
+            }
+        }
 
         public IDeliveryService DeliveryService { get; set; }
 
