@@ -13,7 +13,7 @@ namespace Postbode.Smtp
 
         public Task<IResponse> SendAsync(IPostbode service = null)
         {
-            throw new NotSupportedException("Waiting for .NET Core 1.2.0");
+            throw new NotImplementedException("Waiting for .NET Core 1.2.0");
         }
     }
 
