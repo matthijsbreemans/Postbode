@@ -2,7 +2,7 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "MimeKit": "1.8.0",
+    "MimeKit": "1.10.0",
     "Postbode": "0.1.0-*"
   },
 
