@@ -12,19 +12,27 @@ namespace Postbode.Test
 {
     public class TestHttpClient : IHttpHandler
     {
+        private HttpStatusCode code;
+        private string content;
+
+        public TestHttpClient(HttpStatusCode code, string content)
+        {
+            this.code = code;
+            this.content = content;
+        }
         public HttpResponseMessage Get(string url)
         {
-            return new HttpResponseMessage(HttpStatusCode.OK);
+            return new HttpResponseMessage(code);
         }
 
         public HttpResponseMessage Post(string url, HttpContent content)
         {
-            return new HttpResponseMessage(HttpStatusCode.OK);
+            return new HttpResponseMessage(code);
         }
 
         public Task<HttpResponseMessage> GetAsync(string url)
         {
-            return Task.Run(() => new HttpResponseMessage(HttpStatusCode.OK));
+            return Task.Run(() => new HttpResponseMessage(code));
         }
 
         public Task<HttpResponseMessage> PostAsync(string url, HttpContent content)
@@ -34,8 +42,8 @@ namespace Postbode.Test
 
         private HttpResponseMessage generateResponseMessage()
         {
-            var msg = new HttpResponseMessage(HttpStatusCode.OK);
-            msg.Content = new StringContent("[{}]", Encoding.UTF8, "application/json");
+            var msg = new HttpResponseMessage(code);
+            msg.Content = new StringContent(content, Encoding.UTF8, "application/json");
             return msg;
         }
         public HttpRequestHeaders DefaultRequestHeaders => new HttpClient().DefaultRequestHeaders;

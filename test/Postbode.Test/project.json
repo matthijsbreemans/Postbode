@@ -6,14 +6,14 @@
   "dependencies": {
     "System.Runtime.Serialization.Primitives": "4.1.1",
     "xunit": "2.1.0",
-    "dotnet-test-xunit": "1.0.0-rc2-192208-24",
+    "dotnet-test-xunit": "1.0.0-rc2-build10015",
     "Postbode": "0.1.0-*",
-    "Postbode.Sendgrid": "1.0.0-*",
+    "Postbode.Sendgrid": "0.1.0-*",
     "coveralls.io": "1.3.4",
     "OpenCover": "4.6.519",
-    "Postbode.Smtp": "1.0.0-*",
-    "Postbode.MimeKit": "1.0.0-*",
-    "Postbode.Mailgun": "1.0.0-*"
+    "Postbode.Smtp": "0.1.0-*",
+    "Postbode.MimeKit": "0.1.0-*",
+    "Postbode.Mailgun": "0.1.0-*"
   },
   "testRunner": "xunit",
   "frameworks": {
