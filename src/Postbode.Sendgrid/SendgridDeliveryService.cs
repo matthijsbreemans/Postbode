@@ -8,7 +8,8 @@ using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
-using Postbode.Client;
+using Microsoft.Extensions.Options;
+using Postbode;
 using Postbode.Exceptions;
 using Postbode.Interfaces;
 
@@ -18,7 +19,7 @@ namespace Postbode.Sendgrid
     {
         public string ApiKey { get; set; }
 
-        public SendgridDeliveryService(string apikey = null)
+        public SendgridDeliveryService(string apikey = null, IOptions<PostbodeSendgridOptions> options = null)
         {
             if (apikey != null)
                 ApiKey = apikey;
