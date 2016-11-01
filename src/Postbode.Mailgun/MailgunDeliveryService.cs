@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using Postbode.Client;
 using Postbode.Exceptions;
 using Postbode.Interfaces;
@@ -17,14 +18,19 @@ namespace Postbode.Mailgun
     {
         public string Domain { get; set; }
 
-        public string Apikey { get; set; }
+        public string ApiKey { get; set; }
 
-        public MailgunDeliveryService(string domain = null, string apikey = null)
+        public MailgunDeliveryService(string domain = null, string apikey = null, IOptions<PostbodeMailgunConfig> options = null)
         {
             if (domain != null)
                 Domain = domain;
             if (apikey != null)
-                Apikey = apikey;
+                ApiKey = apikey;
+            if (options?.Value != null)
+            {
+                Domain = options.Value.Domain;
+                ApiKey = options.Value.APIKey;
+            }
 
         }
 
@@ -34,7 +40,7 @@ namespace Postbode.Mailgun
             if (postbode.Mail.Content.IsMime)
             {
                 var client = new HttpClient();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes("api" + ":" + Apikey)));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes("api" + ":" + ApiKey)));
 
 
                 var mail = postbode.Mail;
