@@ -10,7 +10,10 @@
     "Postbode": "0.1.0-*",
     "Postbode.Sendgrid": "1.0.0-*",
     "coveralls.io": "1.3.4",
-    "OpenCover": "4.6.519"
+    "OpenCover": "4.6.519",
+    "Postbode.Smtp": "1.0.0-*",
+    "Postbode.MimeKit": "1.0.0-*",
+    "Postbode.Mailgun": "1.0.0-*"
   },
   "testRunner": "xunit",
   "frameworks": {

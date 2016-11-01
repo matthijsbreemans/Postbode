@@ -13,7 +13,7 @@ namespace Postbode
         {
             if (!string.IsNullOrWhiteSpace(options?.Value?.DefaultFromAddress))
             {
-                SetSender(options.Value.DefaultFromAddress);
+                SetSender(options.Value.DefaultFromAddress, options.Value.DefaultFromName);
             }
         }
 
@@ -78,11 +78,11 @@ namespace Postbode
             return this;
         }
 
-        public IPostbode SetSender(string email)
+        public IPostbode SetSender(string email, string name = null)
         {
             if (Mail == null) Mail = new Mail();
 
-            Mail.From = new Recipient(email);
+            Mail.From = new Recipient(email, name);
 
             return this;
         }

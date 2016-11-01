@@ -30,7 +30,7 @@ namespace Postbode.MimeKit
 
     public static class MimeKitContentExtension
     {
-        public static IPostbode SeMimeKitContent(this IPostbode postbode, MimeEntity content)
+        public static IPostbode SetMimeKitContent(this IPostbode postbode, MimeEntity content)
         {
             postbode.SetContent(new MimeKitContent(content));
             return postbode;

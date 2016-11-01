@@ -12,6 +12,7 @@ using Microsoft.Extensions.Options;
 using Postbode;
 using Postbode.Exceptions;
 using Postbode.Interfaces;
+using Postbode.Utils;
 
 namespace Postbode.Sendgrid
 {
@@ -19,10 +20,16 @@ namespace Postbode.Sendgrid
     {
         public string ApiKey { get; set; }
 
-        public SendgridDeliveryService(string apikey = null, IOptions<PostbodeSendgridOptions> options = null)
+
+        private IHttpHandler _httpClient { get; }
+
+
+        public SendgridDeliveryService(string apikey = null, IOptions<PostbodeSendgridOptions> options = null, IHttpHandler httpClient = null)
         {
             if (apikey != null)
                 ApiKey = apikey;
+
+            _httpClient = httpClient ?? new HttpHandler();
         }
 
         public SendgridDeliveryService()
@@ -33,25 +40,22 @@ namespace Postbode.Sendgrid
         {
             if (!postbode.Mail.Content.IsMime)
             {
-                using (var client = new HttpClient())
-                {
-                    client.BaseAddress = new Uri("https://api.sendgrid.com");
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", ApiKey);
 
-                    //nasty way to prevent external json lib dependecy
-                    var data = "{\"personalizations\": " + generatePersJson(postbode) + "," +
-                               " \"from\": {\"email\": \"" + postbode.Mail.From + "\"}," +
-                               " \"content\": [{\"type\": \"" + postbode.Mail.Content.Type + "\", \"value\": \"" + postbode.Mail.Content.Content + "\"}]" +
-                               "}";
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", ApiKey);
+
+                //nasty way to prevent external json lib dependecy
+                var data = "{\"personalizations\": " + generatePersJson(postbode) + "," +
+                           " \"from\": {\"email\": \"" + postbode.Mail.From + "\"}," +
+                           " \"content\": [{\"type\": \"" + postbode.Mail.Content.Type + "\", \"value\": \"" + postbode.Mail.Content.Content + "\"}]" +
+                           "}";
 
 
-                    var result = await client.PostAsync("v3/mail/send", new StringContent(data, Encoding.UTF8, "application/json"));
+                var result = await _httpClient.PostAsync("https://api.sendgrid.com/v3/mail/send", new StringContent(data, Encoding.UTF8, "application/json"));
 
-                    string resultContent = await result.Content.ReadAsStringAsync();
+                var resultContent = await result.Content.ReadAsStringAsync();
 
-                    return new Response(result.IsSuccessStatusCode, resultContent);
+                return new Response(result.IsSuccessStatusCode, resultContent);
 
-                }
             }
             throw new NoMimeDeliverySetException();
         }
@@ -64,10 +68,6 @@ namespace Postbode.Sendgrid
 
         public string Name => "Sendgrid";
 
-        private class SendgridMail
-        {
-
-        }
     }
 
     public static class SendgridDeliveryServiceExtension
