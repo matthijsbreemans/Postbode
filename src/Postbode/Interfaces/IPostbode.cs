@@ -20,7 +20,7 @@ namespace Postbode
 
         IPostbode SetRecipients(IRecipient[] recipients, RecipientType type = RecipientType.To);
 
-        IPostbode SetSender(string email);
+        IPostbode SetSender(string email, string name = null);
 
         IPostbode SetContent(IContent content);
 
