@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Matthijs Breemans</authors>
+    <owners>Matthijs Breemans</owners>
+    <projectUrl>http://github.com/matthijsbreemans/Postbode</projectUrl>
+    <description>Fluent abstract mail library for .NET</description>
+    <releaseNotes>Initial release</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>Postbode Mail Mailclient</tags>
+  </metadata>
+</package>
