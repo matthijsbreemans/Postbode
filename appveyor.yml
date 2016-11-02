@@ -12,16 +12,16 @@ before_build:
 - cmd: >-
     dotnet restore
 
-    set DNX_BUILD_VERSION=%APPVEYOR_BUILD_NUMBER%
+    set DOTNET_BUILD_VERSION=%APPVEYOR_BUILD_NUMBER%
 
 build:
   publish_nuget: true
   verbosity: minimal
 after_build:
 - cmd: >-
-    dotnet pack --no-build src/Postbode/project.json
+    dotnet pack src/Postbode/project.json
 
-    dotnet pack --no-build src/Postbode.Mailgun/project.json
+    dotnet pack src/Postbode.Mailgun/project.json
 test_script:
 - cmd: .\test.cmd
 deploy:
