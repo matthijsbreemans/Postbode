@@ -1,4 +1,4 @@
-version: 0.1.{build}
+version: 0.1.0-{build}
 environment:
   COVECOV_TOKEN:
     secure: QV71IQgoNpmo7RthgwJFHYSOXDi3Af0TDxy28vTMlhiWBwSilG+oplz3JVrxKd11
