@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Matthijs Breemans</authors>
+    <owners>Matthijs Breemans</owners>
+    <projectUrl>http://github.com/matthijsbreemans/Postbode</projectUrl>
+    <description>Package to use Mailgun with Postbode</description>
+    <releaseNotes>Initial release</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>Postbode Mail Mailclient Mailgun</tags>
+  </metadata>
+</package>
