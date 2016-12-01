@@ -1,4 +1,4 @@
-version: 0.1.0-build{build}
+version: 0.1.0-{build}
 configuration: Release
 environment:
   COVECOV_TOKEN:
@@ -27,7 +27,7 @@ test_script:
 - cmd: .\test.cmd
 
 artifacts:
-- path: 'src\Postbode\**\*.nupkg'
+- path: 'src\Postbode*\**\*.nupkg'
 deploy:
 - provider: NuGet
   api_key:
