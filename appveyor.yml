@@ -21,7 +21,7 @@ build:
 after_build:
 - cmd: >-
     dotnet pack src/Postbode/project.json
-	 
+	
     dotnet pack src/Postbode.Mailgun/project.json
 test_script:
 - cmd: .\test.cmd
