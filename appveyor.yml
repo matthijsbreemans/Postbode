@@ -1,4 +1,5 @@
 version: 0.1.0-{build}
+configuration: Release
 environment:
   COVECOV_TOKEN:
     secure: QV71IQgoNpmo7RthgwJFHYSOXDi3Af0TDxy28vTMlhiWBwSilG+oplz3JVrxKd11
@@ -30,3 +31,4 @@ deploy:
     secure: dOeHvyCsuzlZvo7QYIm6X7w4PzZ/EPw9p9Stkclhh5vStdoaxznuPRgnyU1xKsCP
   on:
     branch: master
+	artifact: /.*\.nupkg/
