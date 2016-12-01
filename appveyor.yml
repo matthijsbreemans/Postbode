@@ -31,4 +31,4 @@ deploy:
     secure: dOeHvyCsuzlZvo7QYIm6X7w4PzZ/EPw9p9Stkclhh5vStdoaxznuPRgnyU1xKsCP
   on:
     branch: master
-	artifact: /.*\.nupkg/
+    artifact: /.*\.nupkg/
