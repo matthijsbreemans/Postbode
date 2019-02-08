@@ -5,7 +5,6 @@ using System.Net;
 using System.Threading.Tasks;
 using Postbode.Content;
 using Postbode.Mailgun;
-using Postbode.Sendgrid;
 using Xunit;
 
 namespace Postbode.Test
