@@ -1,9 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <PackageVersion>0.1.0</PackageVersion>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Postbode.MimeKit</AssemblyName>
+    <PackageId>Postbode.MimeKit</PackageId>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="MimeKitLite" Version="2.1.1" />
   </ItemGroup>
