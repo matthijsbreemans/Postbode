@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Postbode\Postbode.csproj" />
+    <ProjectReference Include="..\Postbode\Postbode.csproj" />
   </ItemGroup>
 
 </Project>
