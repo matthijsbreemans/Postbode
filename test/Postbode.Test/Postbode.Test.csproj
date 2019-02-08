@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <DebugType>portable</DebugType>
+    <AssemblyName>Postbode.Test</AssemblyName>
+    <PackageId>Postbode.Test</PackageId>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <PackageTargetFallback>$(PackageTargetFallback);dotnet5.4;portable-net451+win8</PackageTargetFallback>
+    <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
+    <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="coveralls.io" Version="1.4.2" />
+    <PackageReference Include="OpenCover" Version="4.6.519" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Postbode.Mailgun\Postbode.Mailgun.csproj" />
+    <ProjectReference Include="..\..\src\Postbode.Sendgrid\Postbode.Sendgrid.csproj" />
+    <ProjectReference Include="..\..\src\Postbode.Smtp\Postbode.Smtp.csproj" />
+    <ProjectReference Include="..\..\src\Postbode\Postbode.csproj" />
+  </ItemGroup>
+
+</Project>
